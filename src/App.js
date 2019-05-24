@@ -8,6 +8,7 @@ import Details from './components/Details';
 import Cart from "./components/Cart";
 import Default from './components/Default';
 import Modal from './components/Modal';
+import Login from './components/Login';
 import Contact from './components/Contact';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Navbar />
       <Switch>
         <Route exact path="/" component={ProductList} />
+        <Route path="/login" component={Login} />
         <Route path="/contact" component={Contact} />
         <Route path="/details" component={Details} />
         <Route path="/cart" component={Cart} />

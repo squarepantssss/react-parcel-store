@@ -10,7 +10,6 @@ export default class ProductList extends Component {
                 <div className="py-5">
                     <div className="container">
                         <Title name="Our" title="Products" />
-
                         <div className="row">
                         <ProductConsumer>
                             {value => {
@@ -20,6 +19,9 @@ export default class ProductList extends Component {
                                });
                             }}
                         </ProductConsumer>
+                        <div id="copyright">
+		                    Copyright 2019 &copy; Parcel Store
+		                    </div>
                         </div>
                     </div>
                 </div>

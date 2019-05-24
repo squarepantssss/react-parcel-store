@@ -1,174 +1,19 @@
-import React, { Component } from 'react';
-import "../App.css";
-import { Link } from 'react-router-dom';
+import React from 'react';
 
-const emailRegex = RegExp(
-    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-  );
-  
-  const formValid = ({ formErrors, ...rest }) => {
-    let valid = true;
-  
-    // validate form errors being empty
-    Object.values(formErrors).forEach(val => {
-      val.length > 0 && (valid = false);
-    });
-  
-    // validate the form was filled out
-    Object.values(rest).forEach(val => {
-      val === null && (valid = false);
-    });
-  
-    return valid;
-  };
-  
-  class Contact extends Component {
-    constructor(props) {
-      super(props);
-  
-      this.state = {
-        firstName: null,
-        lastName: null,
-        email: null,
-        password: null,
-        formErrors: {
-          firstName: "",
-          lastName: "",
-          email: "",
-          password: ""
-        }
-      };
-    }
-  
-    handleSubmit = e => {
-      e.preventDefault();
-  
-      if (formValid(this.state)) {
-        console.log(`
-          --SUBMITTING--
-          First Name: ${this.state.firstName}
-          Last Name: ${this.state.lastName}
-          Email: ${this.state.email}
-          Password: ${this.state.password}
-        `);
-      } else {
-        console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
-      }
-    };
-  
-    handleChange = e => {
-      e.preventDefault();
-      const { name, value } = e.target;
-      let formErrors = { ...this.state.formErrors };
-  
-      switch (name) {
-        case "firstName":
-          formErrors.firstName =
-            value.length < 3 ? "minimum 3 characaters required" : "";
-          break;
-        case "lastName":
-          formErrors.lastName =
-            value.length < 3 ? "minimum 3 characaters required" : "";
-          break;
-        case "email":
-          formErrors.email = emailRegex.test(value)
-            ? ""
-            : "invalid email address";
-          break;
-        case "password":
-          formErrors.password =
-            value.length < 6 ? "minimum 6 characaters required" : "";
-          break;
-        default:
-          break;
-      }
-  
-      this.setState({ formErrors, [name]: value }, () => console.log(this.state));
-    };
-  
-    render() {
-      const { formErrors } = this.state;
-  
-      return (
-        <div className="wrapper">
-          <div className="form-wrapper">
-            <h1>Login</h1>
-            <form onSubmit={this.handleSubmit} noValidate>
-              <div className="firstName">
-                <label htmlFor="firstName">First Name</label>
-                <input
-                  className={formErrors.firstName.length > 0 ? "error" : null}
-                  placeholder="First Name"
-                  type="text"
-                  name="firstName"
-                  noValidate
-                  onChange={this.handleChange}
-                />
-                {formErrors.firstName.length > 0 && (
-                  <span className="errorMessage">{formErrors.firstName}</span>
-                )}
-              </div>
-              <div className="lastName">
-                <label htmlFor="lastName">Last Name</label>
-                <input
-                  className={formErrors.lastName.length > 0 ? "error" : null}
-                  placeholder="Last Name"
-                  type="text"
-                  name="lastName"
-                  noValidate
-                  onChange={this.handleChange}
-                />
-                {formErrors.lastName.length > 0 && (
-                  <span className="errorMessage">{formErrors.lastName}</span>
-                )}
-              </div>
-              <div className="email">
-                <label htmlFor="email">Email</label>
-                <input
-                  className={formErrors.email.length > 0 ? "error" : null}
-                  placeholder="Email"
-                  type="email"
-                  name="email"
-                  noValidate
-                  onChange={this.handleChange}
-                />
-                {formErrors.email.length > 0 && (
-                  <span className="errorMessage">{formErrors.email}</span>
-                )}
-              </div>
-              <div className="password">
-                <label htmlFor="password">Password</label>
-                <input
-                  className={formErrors.password.length > 0 ? "error" : null}
-                  placeholder="Password"
-                  type="password"
-                  name="password"
-                  noValidate
-                  onChange={this.handleChange}
-                />
-                {formErrors.password.length > 0 && (
-                  <span className="errorMessage">{formErrors.password}</span>
-                )}
-              </div>
-              <Link to ="/">
-                    
-              <div className="createAccount">
-                <button type="submit">
-                    <div className="container">
-                    Login
-                    </div>
-                </button>
-              </div>
-              </Link>
-            </form>
-            <div className="container">
-                <h1>Instagram :</h1>
-                <h1>@parcel-store</h1>
+export default function Contact() {
+    return (
+        <div className="container mt-5">
+            <div className="row">
+                <div className="col-10 mx-auto text-center text-title">
+                    <h1>Contact For Order :</h1>
+                    <h1>--</h1>
+                    <h1>Instagram : @parcel-store</h1>
+                    <h1>Facebook : parcel-store</h1>
+                    <h1>Twitter : @parcel-store</h1>
+                    <h1>--</h1>
+                    <h1>Phone : 081905108824</h1>
+                </div>
             </div>
-          </div>
         </div>
-      );
-    }
-  }
-
-  export default Contact;
+    );
+}

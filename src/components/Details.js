@@ -33,14 +33,14 @@ export default class Details extends Component {
                             </h4>
                             <h4 className="text-blue">
                             <strong>
-                                price : <span>IDR </span>
+                                price : <span>IDR. </span>
                                 {price}
                             </strong>
                             </h4>
                             <p className="text-capitalize font-weight-bold mt-3 mb-0">
                                 some info about product:
                             </p>
-                            <p className="text-muted lead">{info}</p>
+                            <p className="lead font-weight-bold">{info}</p>
                             {/* button */}
                             <div>
                             <Link to='/'>
